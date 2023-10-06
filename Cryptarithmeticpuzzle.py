@@ -41,9 +41,7 @@ result = st.text_input("Enter the result word: ").upper()
 # Solve the cryptarithmetic puzzle
 solution = solve_cryptarithmetic(word1, word2, result)
 
-st.button("solve")
-
-if st.button:
+if st.button("solve"):
     if solution:
         st.text("Solution found:")
         for char, digit in solution.items():
