@@ -1,4 +1,5 @@
 from itertools import permutations
+import streamlit as st
 
 # Function to check if a given assignment satisfies the equation
 def is_solution(assignment, word1, word2, result):
@@ -30,17 +31,22 @@ def solve_cryptarithmetic(word1, word2, result):
     # No solution found
     return None
 
+st.title("Cryptarithmetic Puzzle")
+
 # Input equation from the user
-word1 = input("Enter the first word: ").upper()
-word2 = input("Enter the second word: ").upper()
-result = input("Enter the result word: ").upper()
+word1 = st.text_input("Enter the first word: ").upper()
+word2 = st.text_input("Enter the second word: ").upper()
+result = st.text_input("Enter the result word: ").upper()
 
 # Solve the cryptarithmetic puzzle
 solution = solve_cryptarithmetic(word1, word2, result)
 
-if solution:
-    print("Solution found:")
-    for char, digit in solution.items():
-        print(f"{char}: {digit}")
-else:
-    print("No solution found.")
+st.button("solve")
+
+if st.button:
+    if solution:
+        st.text("Solution found:")
+        for char, digit in solution.items():
+            st.text(f"{char}: {digit}")
+    else:
+        st.text("No solution found.")
